@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+.b0{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    
+    
+}
+.container{
+    border-style: solid;
+    margin: auto;
+    margin-top: 150px;
+    flex-direction: column;
+    border-radius: 20px;
+    border-color: white;
+   
+    background-color:white;
+    justify-content: center;
+    display: flex;
+    gap: 40px;
+    width: 500px;
+    height: 625px;
+    align-items: center;
+    
+}
+form{
+  
+    
+    height:400px;
+   
+    background-color: white;
+    display: flex;
+    flex-grow: 0.12;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+}
+form>label{
+    align-self: flex-start;
+}
+form>div{
+    display: flex;
+
+    flex-direction: column;
+    
+}
+.entries{
+    
+    width: 350px;
+    height: 30px;
+}
+label{
+    font-size: larger;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+p{
+    font-size: large;
+}
+a{
+    padding-left: 3px;
+}
+.cb{
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+}
+input{
+    border-color: rgb(97, 97, 230);
+    border-style: ridge;
+    background-color: white;
+    border-radius: 5px;
+}
+.red{
+    color: red;
+}
+.b1{
+    border: 0;
+    background-color: rgb(97, 97, 230);
+    width: 350px;
+    margin-top: 10px;
+    height: 40px;
+    color: white;
+    font-size: large;
+    border-radius: 5px;
+}
+
+.f1{
+    width: 350px;
+}
+body{
+    
+    background-color: #4267B2;
+   
+
+    
+}

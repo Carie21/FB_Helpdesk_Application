@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="/styling.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div><h1>Create Account</h1></div>
+      <div class="f1">
+        <form action="/register" method="post">
+          <div>
+            <label for="username">Username:</label>
+            <input class="entries" type="text" name="username" reqiured />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input class="entries" type="text" name="email" reqiured />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input class="entries" type="text" name="password" reqiured />
+          </div>
+          <div class="cb">
+            <input type="checkbox" name="remember" id="cb" />
+            <p style="padding-left: 5px">Remember me</p>
+          </div>
+          <input class="b1" type="submit" value="Sign up" />
+          <div class="b0">
+            <p>
+              Already have an account?<a href="/"><p>Login</p></a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
