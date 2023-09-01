@@ -58,11 +58,18 @@ app.post("/", (req, res) => {
     });
   }
 });
-
+app.get("/continue", (req, res) => {
+  if (req.session.user) {
+    res.render("continue.ejs");
+  } else res.redirect("/");
+});
 app.get("/connect", (req, res) => {
   if (req.session.user) {
     res.render("connect.ejs");
   } else res.redirect("/");
+});
+app.post("/connect", (req, res) => {
+  res.redirect("/continue");
 });
 app.get("/register", (req, res) => {
   res.render("signup.ejs");
@@ -85,17 +92,6 @@ app.post("/register", (req, res) => {
       res.redirect("/");
     }
   });
-  // const newUser = new User({
-  //   username: req.body.username,
-  //   email: req.body.email,
-  //   password: req.body.password,
-  // });
-  // if (req.body.remember === "on") {
-  //   req.session.user = req.body.email;
-  // }
-
-  // newUser.save();
-  // res.render("login.ejs");
 });
 
 app.listen(port);
