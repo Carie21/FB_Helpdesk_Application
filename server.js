@@ -29,48 +29,6 @@ const userSchema = new mongoose.Schema({
 });
 const User = new mongoose.model("User", userSchema);
 
-app.get("/", (req, res) => {
-  res.render("login.ejs");
-});
-app.get("/logout", (req, res) => {
-  req.session.destroy(() => {
-    console.log("logged out");
-  });
-  res.redirect("/");
-});
-app.post("/", (req, res) => {
-  if (req.session.user) {
-    res.redirect("/connect");
-  } else {
-    User.exists({ email: req.body.email }).then((doc) => {
-      if (doc === null) {
-        res.render("login.ejs");
-      } else {
-        User.findOne({ email: req.body.email }).then((docs) => {
-          if (docs.password === req.body.password) {
-            req.session.user = req.body.email;
-            res.redirect("/connect");
-          } else {
-            res.render("login.ejs");
-          }
-        });
-      }
-    });
-  }
-});
-app.get("/continue", (req, res) => {
-  if (req.session.user) {
-    res.render("continue.ejs");
-  } else res.redirect("/");
-});
-app.get("/connect", (req, res) => {
-  if (req.session.user) {
-    res.render("connect.ejs");
-  } else res.redirect("/");
-});
-app.post("/connect", (req, res) => {
-  res.redirect("/continue");
-});
 app.get("/register", (req, res) => {
   res.render("signup.ejs");
 });
@@ -82,10 +40,11 @@ app.post("/register", (req, res) => {
         email: req.body.email,
         password: req.body.password,
       });
-      if (req.body.remember === "on") {
-        req.session.user = req.body.email;
-      }
 
+      if (req.body.remember === "on") {
+        res.cookie("email", req.body.email).send("cookie set");
+      }
+      req.session.user = req.body.email;
       newUser.save();
       res.render("login.ejs");
     } else {
@@ -93,5 +52,70 @@ app.post("/register", (req, res) => {
     }
   });
 });
+app.get("/", (req, res) => {
+  // if (req.cookies.email) {
+  //   req.session.user = req.body.email;
+  //   res.redirect("/connect");
+  // } else
+  console.log(req.cookies);
+  {
+    res.render("login.ejs");
+  }
+});
 
+app.post("/", (req, res) => {
+  // if (req.session.user) {
+  //   res.redirect("/connect");
+  // } else
+  {
+    User.exists({ email: req.body.email }).then((doc) => {
+      if (doc === null) {
+        console.log(req.cookies);
+        res.render("login.ejs");
+      } else {
+        User.findOne({ email: req.body.email }).then((docs) => {
+          if (docs.password === req.body.password) {
+            if (req.body.remember === "on") {
+              res.cookie("email", req.body.email).send("cookie set");
+            }
+            req.session.user = req.body.email;
+            console.log(req.cookies);
+            res.redirect("/connect");
+          } else {
+            res.render("login.ejs");
+          }
+        });
+      }
+    });
+  }
+});
+
+app.get("/connect", (req, res) => {
+  if (req.session.user) {
+    res.render("connect.ejs");
+  } else res.redirect("/");
+});
+app.post("/connect", (req, res) => {
+  res.redirect("/continue");
+});
+
+app.get("/continue", (req, res) => {
+  if (req.session.user) {
+    res.render("continue.ejs");
+  } else res.redirect("/");
+});
+app.post("/continue", (req, res) => {
+  console.log(req.body);
+  res.redirect("/continue");
+});
+
+app.get("/logout", (req, res) => {
+  if (req.session.user) {
+    req.session.destroy(() => {
+      console.log("logged out");
+    });
+  }
+
+  res.redirect("/");
+});
 app.listen(port);
