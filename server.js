@@ -28,16 +28,32 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 const User = new mongoose.model("User", userSchema);
+app.get("/register", (req, res) => {
+  res.render("signup.ejs");
+});
+app.post("/register", (req, res) => {
+  User.exists({ email: req.body.email }).then((doc) => {
+    if (doc === null) {
+      const newUser = new User({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+      });
+      if (req.body.remember === "on") {
+        req.session.user = req.body.email;
+      }
 
+      newUser.save();
+      res.render("login.ejs");
+    } else {
+      res.redirect("/");
+    }
+  });
+});
 app.get("/", (req, res) => {
   res.render("login.ejs");
 });
-app.get("/logout", (req, res) => {
-  req.session.destroy(() => {
-    console.log("logged out");
-  });
-  res.redirect("/");
-});
+
 app.post("/", (req, res) => {
   if (req.session.user) {
     res.redirect("/connect");
@@ -71,27 +87,11 @@ app.get("/connect", (req, res) => {
 app.post("/connect", (req, res) => {
   res.redirect("/continue");
 });
-app.get("/register", (req, res) => {
-  res.render("signup.ejs");
-});
-app.post("/register", (req, res) => {
-  User.exists({ email: req.body.email }).then((doc) => {
-    if (doc === null) {
-      const newUser = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-      });
-      if (req.body.remember === "on") {
-        req.session.user = req.body.email;
-      }
 
-      newUser.save();
-      res.render("login.ejs");
-    } else {
-      res.redirect("/");
-    }
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    console.log("logged out");
   });
+  res.redirect("/");
 });
-
 app.listen(port);
