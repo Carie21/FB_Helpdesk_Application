@@ -10,10 +10,8 @@
 }
 .col1{
 background-color:#4267B2;
-flex-grow: 0.05;
+flex: 0.05 0 0;
 display: flex;
-flex: grow 0;
-    flex: shrink 0;
 border-style: solid;
 border-top: #4267B2;
 border-left: #4267B2;
@@ -22,26 +20,24 @@ border-bottom: #4267B2;
     border-color: rgb(236, 236, 236);
 }
 .col2{
+    position: relative;
     background-color: antiquewhite;
-    flex-grow: 0.2;
-    flex: grow 0;
-    flex: shrink 0;
+    flex: 0.2 0 0;
+    
     display: flex;
     flex-direction: column;
 }
 .col3{
-    flex: grow 0;
-    flex: shrink 0;
+    
     background-color: azure;
-    flex-grow: 0.55;
+    flex: 0.55 0 0;
     display: flex;
     flex-direction: column;
 }
 .col4{
-    flex: grow 0;
-    flex: shrink 0;
+    
     background-color: antiquewhite;
-    flex-grow: 0.2;
+    flex: 0.2 0 0;
     display: flex;
     flex-direction: column;
     border-style: solid;
@@ -49,36 +45,89 @@ border-bottom: #4267B2;
     border-color: rgb(236, 236, 236);
 }
 .p1{
-    flex: grow 0;
-    flex: shrink 0;
+    
     background-color:white;
-    flex-grow: 0.09;
+    flex: 0.07 0 0;
     border-style: solid;
     border-width: 2px;
     border-color: rgb(236, 236, 236);
+    display: flex;
+    
 }
 .p2{
-    flex: grow 0;
-    flex: shrink 0;
+    
     background-color: rgb(240, 236, 236);
-    flex-grow: 0.91;
+    flex: 0.93 0 0;
     border-style: solid;
     border-width: 2px;
     border-color: rgb(236, 236, 236);
+    display: flex;
+    
 }
 #a{
-    flex: grow 0;
-    flex: shrink 0;
+    
     background-color: white;
 }
 
 .x1{
-    flex: grow 0;
-    flex: shrink 0;
-    flex-grow: 0.325;
+    display: flex;
+    flex: 0.325 0 0;
     background-color: white;
 }
 .x2{
-    flex-grow: 0.675;
+    flex: 0.675 0 0;
     background-color: rgb(240, 241, 248);
+    
 }
+#p10{
+    background-color: white;
+    flex: 0.15 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#p11{
+    background-color: white;
+    flex: 0.7 0 0;
+    display: flex;
+    align-items: center;
+    border-width: 1px;
+    border-color: rgb(236, 236, 236);
+    border-style: solid;
+    
+}
+
+#p12{
+    background-color: white;
+    flex: 0.15 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.container1 {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 2px 0;
+    transition: 0.4s;
+  }
+  
+
+  .change .bar1 {
+    transform: translate(0, 5.5px) rotate(-45deg);
+  }
+  
+
+  .change .bar2 {opacity: 0;}
+  
+  
+  .change .bar3 {
+    transform: translate(0, -5.5px) rotate(45deg);
+  }
+
