@@ -12,10 +12,23 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <div class="container">
-      <div class="col1"></div>
+      <div class="col1">
+        <form action="/" method="get" class="lo">
+          <button
+            type="submit"
+            style="background-color: #5d8ae4; border-style: none"
+          >
+            <i class="fa fa-sign-out" style="font-size: 35px"></i>
+          </button>
+        </form>
+      </div>
       <div class="col2">
         <div class="p1">
           <div id="p10">
@@ -75,16 +88,16 @@
       </div>
       <div class="col4">
         <div class="x1" style="flex-direction: column">
-          <div
-            style="background-color: antiquewhite; width: 100%; flex: 0.7 0 0"
-          ></div>
-          <div
-            style="width: 100%; flex: 0.3 0 0; background-color: beige"
-          ></div>
+          <div style="width: 100%; flex: 0.7 0 0"></div>
+          <div style="width: 100%; flex: 0.3 0 0"></div>
         </div>
         <div class="x2"></div>
       </div>
     </div>
-    <script src="./animations.js"></script>
+    <script type="text/javascript">
+      function myFunction(x) {
+        x.classList.toggle("change");
+      }
+    </script>
   </body>
 </html>
