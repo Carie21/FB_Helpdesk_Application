@@ -87,7 +87,9 @@ app.get("/connect", (req, res) => {
 app.post("/connect", (req, res) => {
   res.redirect("/continue");
 });
-
+app.get("/user_page", (req, res) => {
+  res.render("user_page.ejs");
+});
 app.get("/logout", (req, res) => {
   req.session.destroy(() => {
     console.log("logged out");
