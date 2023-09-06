@@ -20,6 +20,17 @@ border-bottom: #4267B2;
     border-width: 2px;
     border-color: rgb(236, 236, 236);
 }
+#lob:hover{
+    cursor: pointer;
+}
+#lobc:hover{
+    color: white;
+}
+#lob:active {
+   
+    transform: translateY(4px);
+  }
+
 .col2{
     position: relative;
     
