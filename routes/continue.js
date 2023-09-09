@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  res.render("user_page.ejs");
+  res.redirect("/user_page");
 });
 
 module.exports = router;
