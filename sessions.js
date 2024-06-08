@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(
   session({
-    secret: "Richpanel please hire me :')",
+    secret: "Hello world!')",
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
     },
